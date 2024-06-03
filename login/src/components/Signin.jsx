@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillFacebook } from 'react-icons/ai';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';  // Import eye icons
 import signupImg from '../assets/trees.jpg';
 
 export default function Signup() {
@@ -11,6 +12,8 @@ export default function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,8 +29,6 @@ export default function Signup() {
 
     setIsLoading(true);
 
-    // Here you can handle the form submission logic
-    // For example, you can send the form data to an API
     console.log({
       name,
       email,
@@ -37,7 +38,7 @@ export default function Signup() {
     setTimeout(() => {
       setIsLoading(false);
       setError('');
-    }, 2000); // Simulating an API call
+    }, 2000);
   };
 
   return (
@@ -79,25 +80,45 @@ export default function Signup() {
           </div>
           <div className='flex flex-col mb-4'>
             <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              className='border bg-gray-200 p-2'
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              aria-required="true"
-            />
+            <div className='relative'>
+              <input
+                id="password"
+                className='border bg-gray-200 p-2 w-full'
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                aria-required="true"
+              />
+              <button
+                type="button"
+                className='absolute inset-y-0 right-0 px-4 text-gray-600'
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+              </button>
+            </div>
           </div>
           <div className='flex flex-col'>
             <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              id="confirmPassword"
-              className='border bg-gray-200 p-2'
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              aria-required="true"
-            />
+            <div className='relative'>
+              <input
+                id="confirmPassword"
+                className='border bg-gray-200 p-2 w-full'
+                type={showConfirmPassword ? 'text' : 'password'}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                aria-required="true"
+              />
+              <button
+                type="button"
+                className='absolute inset-y-0 right-0 px-4 text-gray-600'
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+              >
+                {showConfirmPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+              </button>
+            </div>
           </div>
           {error && <p className='text-red-600'>{error}</p>}
           <button type="submit" className='w-full py-3 mt-8 bg-indigo-600 hover:bg-indigo-500 transition-colors text-white' disabled={isLoading}>
