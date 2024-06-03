@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillFacebook } from 'react-icons/ai';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import loginImg from '../assets/trees.jpg';
 
 export default function Login2() {
@@ -84,7 +85,7 @@ export default function Login2() {
             Remember Me
           </label>
           <p className='text-center mt-8'>
-            Not a member? <a href=" " className='text-indigo-600 hover:underline'>Sign up now</a>
+            Not a member? <Link to="/Signin" className='text-indigo-600 hover:underline'>Sign up now</Link>
           </p>
         </form>
       </div>
