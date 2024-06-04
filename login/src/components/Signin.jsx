@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FcGoogle } from 'react-icons/fc';
+import { FaGoogle } from "react-icons/fa";
 import { AiFillFacebook } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';  // Import eye icons
@@ -53,7 +53,7 @@ export default function Signup() {
               <AiFillFacebook className='mr-2' /> Facebook
             </button>
             <button type="button" className='outline outline-offset-2 outline-2 shadow-lg hover:shadow-xl px-6 py-2 flex items-center' aria-label="Sign up with Google">
-              <FcGoogle className='mr-2' /> Google
+              <FaGoogle className='mr-2' /> Google
             </button>
           </div>
           <div className='flex flex-col mb-4'>
@@ -121,11 +121,11 @@ export default function Signup() {
             </div>
           </div>
           {error && <p className='text-red-600'>{error}</p>}
-          <button type="submit" className='w-full py-3 mt-8 bg-indigo-600 hover:bg-indigo-500 transition-colors text-white' disabled={isLoading}>
+          <button type="submit" className='w-full py-3 mt-8 bg-emerald-500 hover:bg-emerald-800 shadow-lg shadow-green-500/50 transition-colors text-white' disabled={isLoading}>
             {isLoading ? 'Signing Up...' : 'Sign Up'}
           </button>
           <p className='text-center mt-8'>
-            Already a member? <Link to="/" className='text-indigo-600 hover:underline'>Sign in now</Link>
+            Already a member? <Link to="/" className='text-green-500 hover:underline'>Sign in now</Link>
           </p>
         </form>
       </div>
